@@ -42,7 +42,7 @@ public class IntToEng {
     			return firstNumber[k] + "hundred "+thirdNumber[l / 10 - 2]+" "+firstNumber[i];
     		}
     	} else if (j >= 100) {
-    		if (j % 10 == 0) {
+    		/*if (j % 10 == 0) {
     			return firstNumber[m] + "thousand " + firstNumber[i];
     		} else if (j % 10 == 1) {
     			return firstNumber[m] + "thousand " + secondNumber[i];
@@ -52,6 +52,28 @@ public class IntToEng {
     			return firstNumber[k] + "hundred "+secondNumber[i];
     		} else {
     			return firstNumber[k] + "hundred "+thirdNumber[l / 10 - 2]+" "+firstNumber[i];
+    		}*/
+    		if(k % 10 == 0){
+    			if (j % 10 == 0) {
+        			return firstNumber[m] + "thousand " + firstNumber[i];
+        		} else if (j % 10 == 1) {
+        			return firstNumber[m] + "thousand " + secondNumber[i];
+        		} else {
+        			return firstNumber[m] + "thousand "+thirdNumber[l / 10 - 2]+" "+firstNumber[i];
+        		}//100の位が０の時
+    			
+    		} else {
+    			if (m == 1) {
+    				if(l / 10 == 0){
+    					return secondNumber[k%10]+"hundred " + firstNumber[i];
+    				} else if(l / 10 == 1){
+    					return secondNumber[k%10]+"hundred " + secondNumber[i];
+    				} else {
+    					return secondNumber[k%10]+"hundred " + secondNumber[i];//ここ変える
+    				}
+    			} else if(m >= 2 && m <= 9){
+    				return thirdNumber[m - 2] + "hundred " + firstNumber[k];
+    			}
     		}
     		 
     	}
