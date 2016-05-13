@@ -23,6 +23,7 @@ public class IntToEng {
     	int j = n / 10;
     	int k = n / 100;
     	int l = n % 100;
+    	int m = n / 1000;
     	
     	if (n == 0) {
     		return "zero";
@@ -32,15 +33,29 @@ public class IntToEng {
     		return secondNumber[i];
     	} else if(j >= 2 && j <= 9){
     		return thirdNumber[j - 2] + " " + firstNumber[i];
-    	} else if(j >= 10){
-    		if(j == 10){
+    	} else if(j >= 10 && j <= 99){
+    		if(j % 10 == 0){
     			return firstNumber[k] + "hundred "+firstNumber[i];
-    		} else if(j == 11){
+    		} else if(j % 10 == 1){
     			return firstNumber[k] + "hundred "+secondNumber[i];
     		} else {
     			return firstNumber[k] + "hundred "+thirdNumber[l / 10 - 2]+" "+firstNumber[i];
     		}
+    	} else if (j >= 100) {
+    		if (j % 10 == 0) {
+    			return firstNumber[m] + "thousand " + firstNumber[i];
+    		} else if (j % 10 == 1) {
+    			return firstNumber[m] + "thousand " + secondNumber[i];
+    		} else if(j % 10 == 0){
+    			return firstNumber[k] + "hundred "+firstNumber[i];
+    		} else if(j % 10 == 1){
+    			return firstNumber[k] + "hundred "+secondNumber[i];
+    		} else {
+    			return firstNumber[k] + "hundred "+thirdNumber[l / 10 - 2]+" "+firstNumber[i];
+    		}
+    		 
     	}
+    	
     	return "";
 	}
 
