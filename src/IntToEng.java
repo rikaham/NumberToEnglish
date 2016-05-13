@@ -42,17 +42,6 @@ public class IntToEng {
     			return firstNumber[k] + "hundred "+thirdNumber[l / 10 - 2]+" "+firstNumber[i];
     		}
     	} else if (j >= 100) {
-    		/*if (j % 10 == 0) {
-    			return firstNumber[m] + "thousand " + firstNumber[i];
-    		} else if (j % 10 == 1) {
-    			return firstNumber[m] + "thousand " + secondNumber[i];
-    		} else if(j % 10 == 0){
-    			return firstNumber[k] + "hundred "+firstNumber[i];
-    		} else if(j % 10 == 1){
-    			return firstNumber[k] + "hundred "+secondNumber[i];
-    		} else {
-    			return firstNumber[k] + "hundred "+thirdNumber[l / 10 - 2]+" "+firstNumber[i];
-    		}*/
     		if(k % 10 == 0){
     			if (j % 10 == 0) {
         			return firstNumber[m] + "thousand " + firstNumber[i];
@@ -69,16 +58,22 @@ public class IntToEng {
     				} else if(l / 10 == 1){
     					return secondNumber[k%10]+"hundred " + secondNumber[i];
     				} else {
-    					return secondNumber[k%10]+"hundred " + secondNumber[i];//ここ変える
+    					return secondNumber[k%10]+"hundred " + thirdNumber[l / 10 - 2] + " " + firstNumber[i];
     				}
-    			} else if(m >= 2 && m <= 9){
-    				return thirdNumber[m - 2] + "hundred " + firstNumber[k];
+    			} else {
+    				if (j % 10 == 0) {
+    					return thirdNumber[m - 2] + " " + firstNumber[k % 10] + "hundred " + firstNumber[i];
+    				} else if (j % 10 == 1) {
+    					return thirdNumber[m - 2] + " " + firstNumber[k % 10] + "hundred " + secondNumber[i];
+    				} else {
+    					return thirdNumber[m - 2] + " " + firstNumber[k % 10] + "hundred " + thirdNumber[l / 10 - 2] + " " + firstNumber[i];
+    				}
     			}
     		}
-    		 
     	}
-    	
     	return "";
-	}
+    }
+ }
+    	
 
-}
+
